@@ -27,6 +27,9 @@ It includes data preprocessing, model training, evaluation, and making predictio
 
 ## 🏗️ Architecture
 
+## 🏗️ Architecture
+
+```mermaid
 flowchart TD
     %% --- User & App ---
     U[🧑‍💻 User Input<br/>(Ticker, Date Range, Horizon)] --> S[🖥️ Streamlit App]
@@ -44,6 +47,7 @@ flowchart TD
       TF --> M[(🧠 model.keras)]
     end
 
+    %% --- Inference & Visualization ---
     subgraph INFER[Inference & Visualization]
       S --> YF2[💹 yfinance (Latest Data)]
       YF2 --> PD2[📊 pandas + numpy (Same transforms)]
@@ -54,7 +58,7 @@ flowchart TD
       VIZ --> S
       S --> OUT[📜 Forecast Plot, Metrics & Download]
     end
-
+```
 ---
 
 ## 🛠️ Tech Stack
