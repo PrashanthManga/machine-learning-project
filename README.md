@@ -27,8 +27,6 @@ It includes data preprocessing, model training, evaluation, and making predictio
 
 ## 🏗️ Architecture
 
-## 🏗️ Architecture
-
 ```mermaid
 flowchart TD
     %% --- User & App ---
