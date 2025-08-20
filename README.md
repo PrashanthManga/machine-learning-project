@@ -69,30 +69,4 @@ flowchart TD
 
 
 
-## 🏗️ Architecture
 
-```mermaid
-flowchart TD
-  U[User Input ticker and date range] --> S[Streamlit App]
-
-  S --> YF[yfinance download OHLCV]
-  YF --> PD[pandas and numpy clean and feature engineer]
-  PD --> SC[scaling MinMax]
-  SC --> SPLIT[train test split]
-
-  subgraph TRAIN [Model Training]
-    SPLIT -->|X train and y train| TF[Keras TensorFlow model]
-    TF --> M[(saved model keras)]
-  end
-
-  subgraph INFER [Inference and Visualization]
-    S --> YF2[yfinance latest data]
-    YF2 --> PD2[pandas and numpy same transforms]
-    PD2 --> SC2[apply saved scaler]
-    SC2 --> M
-    M --> PRED[predicted prices]
-    PRED --> VIZ[Matplotlib charts]
-    VIZ --> S
-    S --> OUT[forecast plot metrics and download]
-  end
-```
