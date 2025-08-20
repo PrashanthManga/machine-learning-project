@@ -10,22 +10,24 @@ It includes data preprocessing, model training, evaluation, and making predictio
 - **main.py** – Python script for training and running the ML model.  
 - **ML.ipynb** – Jupyter notebook for experimentation, visualization, and model testing.  
 - **stock_predictions_model.keras** – Pre-trained Keras model for stock price prediction.  
+- **ml_workflow.png** – Workflow diagram for the project.  
 
 ---
 
 ## ⚙️ Workflow
 
-1. **Data Collection** – Gather historical stock data.  
-2. **Data Preprocessing** – Clean, scale, and prepare data for model training.  
-3. **Model Training** – Train a deep learning model using Keras/TensorFlow.  
-4. **Model Evaluation** – Assess accuracy, loss, and performance metrics.  
-5. **Prediction** – Generate future stock price predictions.  
+1. **Stock Data Collection** – Gather historical data (e.g., from Yahoo Finance APIs).  
+2. **Data Preprocessing** – Clean, scale, and split data into training/testing sets.  
+3. **Feature Engineering** – Create time windows and input sequences for training.  
+4. **Model Training** – Train a deep learning model (LSTM/ANN) using Keras/TensorFlow.  
+5. **Model Evaluation** – Assess model accuracy and loss metrics.  
+6. **Prediction** – Forecast future stock prices using the trained model.  
 
 ---
 
 ## 📊 Machine Learning Workflow
 
-![ML Workflow](ml_workflow.png)
+![Stock Price Prediction Workflow](ml_workflow.png)
 
 ---
 
