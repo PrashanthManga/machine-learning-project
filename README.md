@@ -30,31 +30,30 @@ It includes data preprocessing, model training, evaluation, and making predictio
 ```mermaid
 flowchart TD
     %% --- User & App ---
-    U[🧑‍💻 User Input<br/>(Ticker, Date Range, Horizon)] --> S[🖥️ Streamlit App]
+    U[User Input (Ticker, Date Range, Horizon)] --> S[Streamlit App]
 
     %% --- Data Ingestion & Prep ---
-    S --> YF[💹 yfinance<br/>Download OHLCV]
-    YF --> PD[📊 pandas + numpy<br/>Clean & Feature Engineer]
-    PD --> SC[⚖️ Scaling (e.g., MinMax)]
-    SC --> SPLIT[🧪 Train/Test Split]
+    S --> YF[yfinance - Download OHLCV]
+    YF --> PD[pandas + numpy - Clean & Feature Engineer]
+    PD --> SC[Scaling - MinMax]
+    SC --> SPLIT[Train/Test Split]
 
-    %% --- Model Train / Predict ---
-    subgraph TRAIN[Model Training]
-      SPLIT -->|X_train, y_train| TF[🤖 Keras/TensorFlow<br/>(LSTM/MLP)]
-      TF -->|fit| TF
-      TF --> M[(🧠 model.keras)]
+    %% --- Model Training ---
+    subgraph TRAIN [Model Training]
+      SPLIT -->|X_train, y_train| TF[Keras/TensorFlow (LSTM/MLP)]
+      TF --> M[(model.keras)]
     end
 
     %% --- Inference & Visualization ---
-    subgraph INFER[Inference & Visualization]
-      S --> YF2[💹 yfinance (Latest Data)]
-      YF2 --> PD2[📊 pandas + numpy (Same transforms)]
-      PD2 --> SC2[⚖️ Apply Saved Scaler]
+    subgraph INFER [Inference & Visualization]
+      S --> YF2[yfinance - Latest Data]
+      YF2 --> PD2[pandas + numpy - same transforms]
+      PD2 --> SC2[Apply saved scaler]
       SC2 --> M
-      M --> PRED[🔮 Predicted Prices]
-      PRED --> VIZ[📈 Matplotlib Charts]
+      M --> PRED[Predicted Prices]
+      PRED --> VIZ[Matplotlib Charts]
       VIZ --> S
-      S --> OUT[📜 Forecast Plot, Metrics & Download]
+      S --> OUT[Forecast plot, metrics, download]
     end
 ```
 ---
