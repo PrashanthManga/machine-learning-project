@@ -27,7 +27,15 @@ It includes data preprocessing, model training, evaluation, and making predictio
 
 ## 📊 Machine Learning Workflow
 
-![Stock Price Prediction Workflow](ml_workflow.png)
+flowchart TD
+    A[📥 User Input: Stock Symbol] --> B[📡 yFinance API: Fetch Historical Data]
+    B --> C[🧹 Data Preprocessing]
+    C -->|Train/Test Split, Scaling, Moving Averages| D[🤖 Keras Model (.keras)]
+    D --> E[📈 Predictions]
+    E --> F[📊 Streamlit UI]
+    B --> F
+    C --> F
+    F -->|Visuals| G[📉 Display Charts: MA50, MA100, MA200, Actual vs Predicted]
 
 ---
 
