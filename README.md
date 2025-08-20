@@ -29,32 +29,28 @@ It includes data preprocessing, model training, evaluation, and making predictio
 
 ```mermaid
 flowchart TD
-    %% --- User & App ---
-    U[User Input (Ticker, Date Range, Horizon)] --> S[Streamlit App]
+  U[User input ticker and date range] --> S[Streamlit app]
 
-    %% --- Data Ingestion & Prep ---
-    S --> YF[yfinance - Download OHLCV]
-    YF --> PD[pandas + numpy - Clean & Feature Engineer]
-    PD --> SC[Scaling - MinMax]
-    SC --> SPLIT[Train/Test Split]
+  S --> YF[yfinance download OHLCV]
+  YF --> PD[pandas and numpy clean and feature engineer]
+  PD --> SC[scaling MinMax]
+  SC --> SPLIT[train test split]
 
-    %% --- Model Training ---
-    subgraph TRAIN [Model Training]
-      SPLIT -->|X_train, y_train| TF[Keras/TensorFlow (LSTM/MLP)]
-      TF --> M[(model.keras)]
-    end
+  subgraph TRAIN [Model training]
+    SPLIT -->|X train and y train| TF[Keras TensorFlow model]
+    TF --> M[(saved model keras)]
+  end
 
-    %% --- Inference & Visualization ---
-    subgraph INFER [Inference & Visualization]
-      S --> YF2[yfinance - Latest Data]
-      YF2 --> PD2[pandas + numpy - same transforms]
-      PD2 --> SC2[Apply saved scaler]
-      SC2 --> M
-      M --> PRED[Predicted Prices]
-      PRED --> VIZ[Matplotlib Charts]
-      VIZ --> S
-      S --> OUT[Forecast plot, metrics, download]
-    end
+  subgraph INFER [Inference and visualization]
+    S --> YF2[yfinance latest data]
+    YF2 --> PD2[pandas and numpy same transforms]
+    PD2 --> SC2[apply saved scaler]
+    SC2 --> M
+    M --> PRED[predicted prices]
+    PRED --> VIZ[Matplotlib charts]
+    VIZ --> S
+    S --> OUT[forecast plot metrics and download]
+  end
 ```
 ---
 
