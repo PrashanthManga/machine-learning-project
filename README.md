@@ -25,17 +25,16 @@ It includes data preprocessing, model training, evaluation, and making predictio
 
 ---
 
-## 📊 Machine Learning Workflow
+## 🏗️ Architecture
 
 flowchart TD
-    A[📥 User Input: Stock Symbol] --> B[📡 yFinance API: Fetch Historical Data]
-    B --> C[🧹 Data Preprocessing]
-    C -->|Train/Test Split, Scaling, Moving Averages| D[🤖 Keras Model (.keras)]
-    D --> E[📈 Predictions]
-    E --> F[📊 Streamlit UI]
-    B --> F
-    C --> F
-    F -->|Visuals| G[📉 Display Charts: MA50, MA100, MA200, Actual vs Predicted]
+    User[🧑 User Input: Stock Symbol & Date Range] --> Streamlit[🖥️ Streamlit Web App]
+    Streamlit --> YFinance[💹 yFinance API: Stock Data]
+    YFinance --> Pandas[📊 Pandas + NumPy: Data Cleaning & Preprocessing]
+    Pandas --> Matplotlib[📈 Visualization with Matplotlib]
+    Pandas --> TensorFlow[🤖 Keras/TensorFlow Model]
+    TensorFlow -->|Predicted Prices| Streamlit
+    Streamlit --> Output[📜 Predicted Stock Price & Graph]
 
 ---
 
